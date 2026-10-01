@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+build/
+app/build/
+app/release/
+!gradle-wrapper.jar
+
+# Local config
+local.properties
+keystore.properties
+
+# Signing — NEVER commit these
+*.jks
+*.keystore
+*.pepk
+.kotlin/
+# Android Studio
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# OS
+.DS_Store
+Thumbs.db
