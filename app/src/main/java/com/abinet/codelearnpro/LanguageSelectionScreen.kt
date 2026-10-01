@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,28 +19,24 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Bookmark
-import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
@@ -55,11 +50,9 @@ fun LanguageSelectionScreen(
     onContactClick: () -> Unit,
     onSearchClick: () -> Unit,
     onBookmarksClick: () -> Unit,
-    onApiConfigClick: () -> Unit, // API Configuration button
     modifier: Modifier = Modifier
 ) {
     val isDarkTheme = themeViewModel.isDarkTheme.value
-    val allLessons = LessonDataProvider.getAllLessons()
     val overallProgress = progressViewModel.getOverallProgress()
     val completedCount = progressViewModel.getCompletedCount()
     val totalCount = progressViewModel.getTotalLessonsCount()
@@ -75,7 +68,6 @@ fun LanguageSelectionScreen(
                     )
                 },
                 actions = {
-                    // Progress indicator in top bar
                     Box(
                         modifier = Modifier
                             .padding(end = 8.dp)
@@ -93,22 +85,15 @@ fun LanguageSelectionScreen(
                         )
                     }
 
-                    // Bookmarks button (with count badge)
-                    Box(
-                        modifier = Modifier.padding(end = 4.dp)
-                    ) {
+                    Box(modifier = Modifier.padding(end = 4.dp)) {
                         val bookmarkCount = BookmarkRepository.getBookmarkCount()
-                        IconButton(
-                            onClick = onBookmarksClick
-                        ) {
+                        IconButton(onClick = onBookmarksClick) {
                             Icon(
                                 imageVector = Icons.Filled.Bookmark,
                                 contentDescription = "Bookmarks",
                                 tint = MaterialTheme.colorScheme.onSurface
                             )
                         }
-
-                        // Show count badge if there are bookmarks
                         if (bookmarkCount > 0) {
                             Box(
                                 modifier = Modifier
@@ -129,10 +114,7 @@ fun LanguageSelectionScreen(
                         }
                     }
 
-                    // Search button
-                    IconButton(
-                        onClick = onSearchClick
-                    ) {
+                    IconButton(onClick = onSearchClick) {
                         Icon(
                             imageVector = Icons.Filled.Search,
                             contentDescription = "Search lessons",
@@ -140,21 +122,7 @@ fun LanguageSelectionScreen(
                         )
                     }
 
-                    // API Configuration button - Using Settings icon instead of Api
-                    IconButton(
-                        onClick = onApiConfigClick
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Settings,
-                            contentDescription = "API Configuration",
-                            tint = MaterialTheme.colorScheme.onSurface
-                        )
-                    }
-
-                    // Theme toggle button
-                    IconButton(
-                        onClick = { themeViewModel.toggleTheme() }
-                    ) {
+                    IconButton(onClick = { themeViewModel.toggleTheme() }) {
                         if (isDarkTheme) {
                             Icon(
                                 imageVector = Icons.Filled.LightMode,
@@ -185,7 +153,6 @@ fun LanguageSelectionScreen(
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Overall Progress Card
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -205,7 +172,6 @@ fun LanguageSelectionScreen(
                             modifier = Modifier.padding(bottom = 8.dp)
                         )
 
-                        // Progress bar
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -240,7 +206,6 @@ fun LanguageSelectionScreen(
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.primary
                             )
-
                             Text(
                                 text = "$completedCount/$totalCount lessons completed",
                                 style = MaterialTheme.typography.bodyMedium,
@@ -273,7 +238,6 @@ fun LanguageSelectionScreen(
                     modifier = Modifier.padding(bottom = 32.dp)
                 )
 
-                // Show our language cards with progress
                 languages.forEach { language ->
                     val languageProgress = progressViewModel.getLanguageProgress(language.id)
                     LanguageCard(
@@ -286,7 +250,6 @@ fun LanguageSelectionScreen(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // About and Contact buttons
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -299,7 +262,6 @@ fun LanguageSelectionScreen(
                         color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.clickable { onAboutClick() }
                     )
-
                     Text(
                         text = "Contact",
                         style = MaterialTheme.typography.bodyMedium,
@@ -338,9 +300,7 @@ fun LanguageCard(
             containerColor = Color(language.color).copy(alpha = 0.1f)
         )
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
+        Column(modifier = Modifier.padding(16.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
@@ -362,9 +322,7 @@ fun LanguageCard(
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                Column(
-                    modifier = Modifier.weight(1f)
-                ) {
+                Column(modifier = Modifier.weight(1f)) {
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
@@ -375,8 +333,6 @@ fun LanguageCard(
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.SemiBold
                         )
-
-                        // Progress indicator
                         Text(
                             text = languageProgress.progressText,
                             style = MaterialTheme.typography.labelSmall,
@@ -406,7 +362,6 @@ fun LanguageCard(
                         modifier = Modifier.padding(top = 8.dp)
                     )
 
-                    // Progress bar for each language
                     if (languageProgress.totalLessons > 0) {
                         Spacer(modifier = Modifier.height(8.dp))
                         Box(

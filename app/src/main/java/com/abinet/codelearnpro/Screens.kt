@@ -1,6 +1,5 @@
 package com.abinet.codelearnpro
 
-// Screens/Destinations in our app
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object LanguageDetail : Screen("language/{languageId}") {
@@ -19,10 +18,8 @@ sealed class Screen(val route: String) {
     object CodeExecution : Screen("code/{lessonId}") {
         fun createRoute(lessonId: String) = "code/$lessonId"
     }
-    object ApiConfiguration : Screen("api-config") // NEW
 }
 
-// Language types for navigation
 enum class LanguageType(val id: Int) {
     PYTHON(1),
     CPP(2),

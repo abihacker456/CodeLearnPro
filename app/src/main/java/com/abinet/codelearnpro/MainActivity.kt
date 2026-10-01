@@ -18,13 +18,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Initialize SearchRepository with context
         SearchRepository.initialize(applicationContext)
-        // Initialize BookmarkRepository with context
         BookmarkRepository.initialize(applicationContext)
 
         setContent {
-            // Get the ViewModels at the root level
             val themeViewModel: ThemeViewModel = viewModel()
             val progressViewModel: ProgressViewModel = viewModel(
                 factory = ProgressViewModelFactory(application)
@@ -64,9 +61,6 @@ class MainActivity : ComponentActivity() {
                                 onBookmarksClick = {
                                     navController.navigate(Screen.Bookmarks.route)
                                 },
-                                onApiConfigClick = {
-                                    navController.navigate(Screen.ApiConfiguration.route)
-                                },
                                 modifier = Modifier.fillMaxSize()
                             )
                         }
@@ -96,7 +90,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // In MainActivity.kt, update the LessonDetailScreen composable:
                         composable(Screen.LessonDetail.route) { backStackEntry ->
                             val lessonId = backStackEntry.arguments?.getString("lessonId") ?: "python_01"
                             val lesson = LessonDataProvider.getLessonById(lessonId)
@@ -107,7 +100,7 @@ class MainActivity : ComponentActivity() {
                                 onTryCodeClick = { clickedLessonId ->
                                     navController.navigate(Screen.CodeExecution.createRoute(clickedLessonId))
                                 },
-                                onNextLessonClick = { nextLessonId -> // NEW
+                                onNextLessonClick = { nextLessonId ->
                                     navController.navigate(Screen.LessonDetail.createRoute(nextLessonId))
                                 },
                                 modifier = Modifier.fillMaxSize()
@@ -155,13 +148,6 @@ class MainActivity : ComponentActivity() {
                                 onLessonClick = { clickedLesson ->
                                     navController.navigate(Screen.LessonDetail.createRoute(clickedLesson.id))
                                 },
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
-
-                        composable(Screen.ApiConfiguration.route) {
-                            ApiConfigurationScreen(
-                                onBackClick = { navController.popBackStack() },
                                 modifier = Modifier.fillMaxSize()
                             )
                         }

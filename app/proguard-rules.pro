@@ -19,11 +19,10 @@
 -keep class androidx.compose.** { *; }
 -dontwarn androidx.compose.**
 
-# --- App model classes (safe for reflection) ---
+# --- App model classes ---
 -keep class com.abinet.codelearnpro.Lesson { *; }
 -keep class com.abinet.codelearnpro.ProgrammingLanguage { *; }
 -keep class com.abinet.codelearnpro.ExecutionResult { *; }
--keep class com.abinet.codelearnpro.JDoodleResult { *; }
 
 # --- Keep line numbers for crash reports ---
 -keepattributes SourceFile,LineNumberTable
