@@ -1,9 +1,7 @@
 package com.abinet.codelearnpro
 
 import androidx.compose.foundation.clickable
-import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,7 +13,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun ContactScreen(
@@ -39,7 +37,6 @@ fun ContactScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        // Back button
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Start
@@ -56,24 +53,21 @@ fun ContactScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "Contact Me",
+            text = "Contact Support",
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 8.dp)
         )
 
         Text(
-            text = "Get in touch with questions, feedback, or collaboration opportunities",
+            text = "Questions, bug reports, or feature requests? I'd love to hear from you.",
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(bottom = 32.dp)
         )
 
-        // Contact Card
-        Card(
-            modifier = Modifier.fillMaxWidth()
-        ) {
+        Card(modifier = Modifier.fillMaxWidth()) {
             Column(
                 modifier = Modifier.padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -86,23 +80,16 @@ fun ContactScreen(
                 )
 
                 Text(
-                    text = "IT Student & Android Developer",
+                    text = "Developer, CodeLearn Pro",
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
 
-                // Contact Items
-                ContactItem(
-                    icon = "📱",
-                    title = "Phone Numbers",
-                    content = "0948713566\n0914156456"
-                )
-
                 ContactItem(
                     icon = "📧",
-                    title = "Email",
-                    content = "endaleabinet67@gmail.com"
+                    title = "Support Email",
+                    content = "endaleabinet67+codelearn@gmail.com"
                 )
 
                 ContactItem(
@@ -110,33 +97,26 @@ fun ContactScreen(
                     title = "University",
                     content = "Madda Walabu University\nBale Robe, Ethiopia"
                 )
-
-                ContactItem(
-                    icon = "🎓",
-                    title = "Education",
-                    content = "2nd Year IT Student\nBachelor of Information Technology"
-                )
             }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Message Card
-        Card(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(
-                    text = "Preferred Contact Method",
+                    text = "What to Include",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
 
                 Text(
-                    text = "For quick responses, please use phone calls or Telegram. For detailed questions or collaboration proposals, email is preferred.",
+                    text = "To help me respond faster, please include:\n\n" +
+                            "• Your device model and Android version\n" +
+                            "• A short description of the issue\n" +
+                            "• The exact steps to reproduce it\n" +
+                            "• A screenshot if possible",
                     style = MaterialTheme.typography.bodyLarge,
                     lineHeight = 24.sp
                 )
@@ -145,13 +125,8 @@ fun ContactScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Response Time Card
-        Card(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = "Response Time",
                     style = MaterialTheme.typography.titleLarge,
@@ -160,7 +135,9 @@ fun ContactScreen(
                 )
 
                 Text(
-                    text = "• Phone/Telegram: Usually within hours\n• Email: Within 24 hours\n• Weekdays: Faster responses\n• Weekends: Slightly longer responses",
+                    text = "• Usually within 48 hours\n" +
+                            "• Weekdays are faster\n" +
+                            "• Bug reports are prioritized",
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
@@ -182,15 +159,12 @@ fun ContactItem(
             .fillMaxWidth()
             .padding(vertical = 12.dp)
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = icon,
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(end = 12.dp)
             )
-
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleMedium,
