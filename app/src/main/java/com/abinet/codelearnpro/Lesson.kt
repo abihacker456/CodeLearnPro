@@ -7,7 +7,8 @@ data class Lesson(
     val description: String,
     val content: String,
     val codeExample: String,
-    val difficulty: String, // "Beginner", "Intermediate", "Advanced"
-    val estimatedTime: Int, // in minutes
-    val order: Int // for sorting lessons in order
+    val exercise: String,
+    val difficulty: String,
+    val estimatedTime: Int,
+    val order: Int
 )

@@ -314,44 +314,7 @@ fun LessonDetailScreen(
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
 
-                val exercise = when (lesson.id) {
-                    // Python exercises
-                    "python_01" -> "Create a program that prints your name, age, and university."
-                    "python_02" -> "Create variables for your favorite book, its price, and whether you've read it. Print them."
-                    "python_03" -> "Write a program that checks if a number is positive, negative, or zero."
-                    "python_04" -> "Print all even numbers from 1 to 20 using a loop."
-                    "python_05" -> "Create a function that calculates the area of a rectangle."
-
-                    // C++ exercises
-                    "cpp_01" -> "Write a C++ program that prints your name and university."
-                    "cpp_02" -> "Create variables for student information (name, age, GPA) and display them."
-                    "cpp_03" -> "Write a program that determines if a student passed or failed (score >= 60)."
-                    "cpp_04" -> "Create a function that calculates the average of three numbers."
-                    "cpp_05" -> "Create an array of 5 numbers and find the largest number."
-
-                    // Kotlin exercises
-                    "kotlin_01" -> "Write a Kotlin program that greets the user with their name."
-                    "kotlin_02" -> "Create val and var variables for your favorite programming language and version."
-                    "kotlin_03" -> "Create a function that takes two numbers and returns their sum."
-                    "kotlin_04" -> "Use when expression to convert numeric grade to letter grade (A, B, C, D, F)."
-                    "kotlin_05" -> "Create a list of your favorite movies and print each one."
-
-                    // Java exercises
-                    "java_01" -> "Create a Java program that prints 'Hello, Java!' and your name."
-                    "java_02" -> "Declare variables for a student's information and display them using System.out.println()."
-                    "java_03" -> "Write a program that checks voting eligibility (age >= 18)."
-                    "java_04" -> "Create a method that checks if a number is even or odd."
-                    "java_05" -> "Create a Student class with name and age, then create an object and display its information."
-
-                    // JavaScript exercises
-                    "js_01" -> "Create a simple HTML page with JavaScript that shows an alert with your name."
-                    "js_02" -> "Use let, const, and var to declare different types of variables and log them to console."
-                    "js_03" -> "Create a function that converts Celsius to Fahrenheit."
-                    "js_04" -> "Create a button that changes the text color when clicked (simulate DOM manipulation)."
-                    "js_05" -> "Create an array of fruits and use forEach to print each fruit to console."
-
-                    else -> "Modify the code example to solve a similar problem."
-                }
+                val exercise = lesson.exercise
 
                 Text(
                     text = exercise,
