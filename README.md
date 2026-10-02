@@ -30,3 +30,21 @@ A free Android app for learning programming. Built with Kotlin and Jetpack Compo
 ## Build
 
 1. Clone the repo:
+   git clone https://github.com/abihacker456/CodeLearnPro.git
+
+2. Open the project in Android Studio.
+
+3. Create `keystore.properties` in the project root (required for signed release builds):
+   storeFile=your-keystore.jks
+storePassword=your_password
+keyAlias=your_alias
+keyPassword=your_key_password
+
+4. Build:
+   ./gradlew assembleDebug # debug APK
+./gradlew bundleRelease # release AAB
+
+## License
+
+All rights reserved. Personal project by Abinet Endale.
+
