@@ -2,6 +2,7 @@
 
 A free Android app for learning programming. Built with Kotlin and Jetpack Compose.
 
+[![Android CI](https://github.com/abihacker456/CodeLearnPro/actions/workflows/android.yml/badge.svg)](https://github.com/abihacker456/CodeLearnPro/actions/workflows/android.yml)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![Compose](https://img.shields.io/badge/Jetpack%20Compose-2024.09.00-4285F4?logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
 [![Min SDK](https://img.shields.io/badge/minSdk-24-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
