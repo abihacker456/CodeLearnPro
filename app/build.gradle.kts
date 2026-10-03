@@ -20,8 +20,8 @@ android {
         applicationId = "com.abinet.codelearnpro"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
@@ -68,7 +68,6 @@ android {
         compose = true
         buildConfig = true
     }
-    // NOTE: No composeOptions block — Kotlin 2.0+ handles this via the compose plugin
 
     packaging {
         resources {
@@ -100,7 +99,7 @@ dependencies {
     // DataStore
     implementation(libs.androidx.datastore.preferences)
 
-    // HTTP for Piston API
+    // HTTP for Judge0 API
     implementation(libs.okhttp)
 
     testImplementation(libs.junit)
