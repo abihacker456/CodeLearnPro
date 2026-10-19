@@ -1,6 +1,7 @@
 package com.abinet.codelearnpro
 
 val javaScriptLessons = listOf(
+    // --- ORIGINAL 5 LESSONS ---
     Lesson(
         id = "js_01",
         languageId = 5,
@@ -93,8 +94,6 @@ val javaScriptLessons = listOf(
                 console.log(greet("Abinet"));
 
             If a function has no return statement, it returns undefined.
-
-            Parameters are the names in the function definition. Arguments are the values you pass when calling it.
         """.trimIndent(),
         codeExample = """
             function add(a, b) {
@@ -133,11 +132,6 @@ val javaScriptLessons = listOf(
                 for (let i = 0; i < fruits.length; i++) {
                     console.log(fruits[i]);
                 }
-
-            Or use forEach:
-                fruits.forEach(f => console.log(f));
-
-            Arrays can hold mixed types, but keeping them consistent avoids bugs.
         """.trimIndent(),
         codeExample = """
             const fruits = ["Apple", "Banana", "Cherry"];
@@ -178,18 +172,7 @@ val javaScriptLessons = listOf(
                 student.grade = "A";
                 student.age = 21;
 
-            Objects often contain functions, called methods:
-                const counter = {
-                    count: 0,
-                    increment() {
-                        this.count = this.count + 1;
-                    }
-                };
-
-                counter.increment();
-                console.log(counter.count);   // 1
-
-            Inside a method, this refers to the object.
+            Objects often contain functions, called methods.
         """.trimIndent(),
         codeExample = """
             const student = {
@@ -208,5 +191,383 @@ val javaScriptLessons = listOf(
         difficulty = "Intermediate",
         estimatedTime = 30,
         order = 5
+    ),
+
+    // --- NEW 10 LESSONS ---
+    Lesson(
+        id = "js_06",
+        languageId = 5,
+        title = "Loops",
+        description = "Repeat actions using for and while",
+        content = """
+            Loops execute a block of code multiple times.
+
+            `for` loop — used when you know how many times to loop:
+                for (let i = 0; i < 3; i++) {
+                    console.log(i);
+                }
+
+            `while` loop — repeats as long as a condition is true:
+                let count = 0;
+                while (count < 3) {
+                    console.log(count);
+                    count++;
+                }
+
+            Be careful with while loops — if the condition never becomes false, it will run forever and crash your app.
+        """.trimIndent(),
+        codeExample = """
+            // For loop
+            for (let i = 1; i <= 3; i++) {
+                console.log("Count: " + i);
+            }
+
+            // While loop
+            let num = 3;
+            while (num > 0) {
+                console.log("Num: " + num);
+                num--;
+            }
+        """.trimIndent(),
+        exercise = "Use a for loop to print all even numbers from 2 to 10.",
+        difficulty = "Beginner",
+        estimatedTime = 20,
+        order = 6
+    ),
+    Lesson(
+        id = "js_07",
+        languageId = 5,
+        title = "Array Methods",
+        description = "Transform and filter arrays easily",
+        content = """
+            JavaScript arrays have powerful built-in methods that take a function (callback) as an argument.
+
+            `map()` creates a new array by applying a function to every item:
+                const nums = [1, 2, 3];
+                const doubled = nums.map(n => n * 2);
+                // [2, 4, 6]
+
+            `filter()` creates a new array with items that pass a test:
+                const evens = nums.filter(n => n % 2 === 0);
+                // [2]
+
+            `forEach()` executes a function for each item (returns nothing):
+                nums.forEach(n => console.log(n));
+        """.trimIndent(),
+        codeExample = """
+            const prices = [10, 25, 5, 50];
+
+            const doubledPrices = prices.map(p => p * 2);
+            console.log(doubledPrices);
+
+            const expensive = prices.filter(p => p > 10);
+            console.log(expensive);
+        """.trimIndent(),
+        exercise = "Given the array `const ages = [12, 18, 25, 14, 30]`, use `filter()` to create an array of ages that are 18 or older and print it.",
+        difficulty = "Intermediate",
+        estimatedTime = 25,
+        order = 7
+    ),
+    Lesson(
+        id = "js_08",
+        languageId = 5,
+        title = "String Methods",
+        description = "Manipulate and search text",
+        content = """
+            Strings in JavaScript have many useful methods.
+
+            const text = "Hello World";
+
+            - text.length -> 11
+            - text.toUpperCase() -> "HELLO WORLD"
+            - text.toLowerCase() -> "hello world"
+            - text.includes("World") -> true
+            - text.indexOf("World") -> 6
+            - text.slice(0, 5) -> "Hello"
+            - text.split(" ") -> ["Hello", "World"]
+
+            Remember, strings are immutable. These methods return new strings, they do not change the original.
+        """.trimIndent(),
+        codeExample = """
+            const sentence = "JavaScript is fun";
+
+            console.log(sentence.length);
+            console.log(sentence.toUpperCase());
+            console.log(sentence.includes("fun"));
+            console.log(sentence.split(" "));
+        """.trimIndent(),
+        exercise = "Create a string variable with the text ' Programming '. Use `.trim()` to remove the spaces, and print the trimmed length.",
+        difficulty = "Beginner",
+        estimatedTime = 20,
+        order = 8
+    ),
+    Lesson(
+        id = "js_09",
+        languageId = 5,
+        title = "Error Handling",
+        description = "Catch errors and prevent crashes",
+        content = """
+            Errors happen. If you try to access a property of null, your program will crash.
+
+            Use `try` and `catch` to handle errors gracefully:
+                try {
+                    // risky code
+                    let result = myFunction();
+                } catch (error) {
+                    // handle the error
+                    console.log("An error occurred: " + error.message);
+                }
+
+            You can also throw your own errors:
+                throw new Error("Something went wrong");
+        """.trimIndent(),
+        codeExample = """
+            try {
+                const user = null;
+                console.log(user.name); // This will cause an error
+            } catch (error) {
+                console.log("Caught an error!");
+            }
+        """.trimIndent(),
+        exercise = "Write a try/catch block. Inside the try block, use `throw new Error('Test error')`. Catch it and print 'Handled'.",
+        difficulty = "Intermediate",
+        estimatedTime = 25,
+        order = 9
+    ),
+    Lesson(
+        id = "js_10",
+        languageId = 5,
+        title = "Classes",
+        description = "Blueprints for creating objects",
+        content = """
+            ES6 introduced the `class` syntax, which makes object-oriented programming easier.
+
+            class Car {
+                constructor(brand) {
+                    this.brand = brand;
+                }
+
+                drive() {
+                    console.log(this.brand + " is driving");
+                }
+            }
+
+            Create an instance using `new`:
+                const myCar = new Car("Toyota");
+                myCar.drive();
+        """.trimIndent(),
+        codeExample = """
+            class Student {
+                constructor(name, grade) {
+                    this.name = name;
+                    this.grade = grade;
+                }
+
+                introduce() {
+                    console.log("I am " + this.name + " and my grade is " + this.grade);
+                }
+            }
+
+            const s1 = new Student("Abinet", "A");
+            s1.introduce();
+        """.trimIndent(),
+        exercise = "Create a class called `Book` with a constructor that takes `title` and `author`. Add a method `describe` that prints both.",
+        difficulty = "Intermediate",
+        estimatedTime = 30,
+        order = 10
+    ),
+    Lesson(
+        id = "js_11",
+        languageId = 5,
+        title = "Destructuring and Spread",
+        description = "Extract values from arrays and objects",
+        content = """
+            Destructuring lets you unpack values from arrays or objects into distinct variables.
+
+            Array destructuring:
+                const colors = ["red", "green"];
+                const [first, second] = colors;
+                console.log(first); // "red"
+
+            Object destructuring:
+                const user = { name: "Abinet", age: 20 };
+                const { name, age } = user;
+                console.log(name); // "Abinet"
+
+            The spread operator `...` expands elements:
+                const arr1 = [1, 2];
+                const arr2 = [...arr1, 3, 4]; // [1, 2, 3, 4]
+        """.trimIndent(),
+        codeExample = """
+            const numbers = [10, 20, 30];
+            const [a, b] = numbers;
+            console.log(a);
+            console.log(b);
+
+            const user = { name: "Abi", role: "Dev" };
+            const { name } = user;
+            console.log(name);
+        """.trimIndent(),
+        exercise = "Create an object `movie` with `title` and `year`. Destructure them into variables and print the title.",
+        difficulty = "Intermediate",
+        estimatedTime = 25,
+        order = 11
+    ),
+    Lesson(
+        id = "js_12",
+        languageId = 5,
+        title = "Promises and Async/Await",
+        description = "Handle asynchronous operations",
+        content = """
+            JavaScript is asynchronous. Promises represent a value that will be available later.
+
+            An `async` function automatically returns a Promise.
+            `await` pauses the function until the Promise resolves.
+
+            async function fetchData() {
+                try {
+                    const response = await fetch("https://api.example.com");
+                    const data = await response.json();
+                    console.log(data);
+                } catch (error) {
+                    console.log("Failed to fetch");
+                }
+            }
+
+            (Note: `fetch` might not work in the sandbox environment, so we use a simulated example).
+        """.trimIndent(),
+        codeExample = """
+            async function getMessage() {
+                // Simulate a network request delay
+                return new Promise(resolve => {
+                    setTimeout(() => resolve("Data loaded!"), 1000);
+                });
+            }
+
+            async function start() {
+                console.log("Loading...");
+                const result = await getMessage();
+                console.log(result);
+            }
+
+            start();
+        """.trimIndent(),
+        exercise = "Write an async function called `hello` that returns the string 'Hello World' after a 1-second delay using a Promise. Call it and log the result.",
+        difficulty = "Advanced",
+        estimatedTime = 35,
+        order = 12
+    ),
+    Lesson(
+        id = "js_13",
+        languageId = 5,
+        title = "Working with JSON",
+        description = "Convert objects to strings and back",
+        content = """
+            JSON (JavaScript Object Notation) is the standard format for sending data across the web.
+
+            Convert an object to a JSON string using `JSON.stringify()`:
+                const user = { name: "Abinet", age: 20 };
+                const jsonString = JSON.stringify(user);
+                // '{"name":"Abinet","age":20}'
+
+            Convert a JSON string back to an object using `JSON.parse()`:
+                const parsed = JSON.parse(jsonString);
+                console.log(parsed.name); // "Abinet"
+        """.trimIndent(),
+        codeExample = """
+            const car = {
+                brand: "Toyota",
+                model: "Corolla",
+                year: 2022
+            };
+
+            const jsonText = JSON.stringify(car);
+            console.log(jsonText);
+
+            const backToObject = JSON.parse(jsonText);
+            console.log(backToObject.brand);
+        """.trimIndent(),
+        exercise = "Create an object `student` with `name` and `grade`. Use `JSON.stringify()` to convert it to a string and print it.",
+        difficulty = "Intermediate",
+        estimatedTime = 20,
+        order = 13
+    ),
+    Lesson(
+        id = "js_14",
+        languageId = 5,
+        title = "Math and Date",
+        description = "Built-in objects for numbers and time",
+        content = """
+            The `Math` object provides mathematical constants and functions.
+                Math.PI
+                Math.max(10, 20) // 20
+                Math.floor(4.9)  // 4
+                Math.random()    // Random number between 0 and 1
+
+            The `Date` object works with dates and times.
+                const now = new Date();
+                now.getFullYear();
+                now.getMonth(); // 0 = January
+        """.trimIndent(),
+        codeExample = """
+            console.log(Math.max(5, 10, 2));
+            console.log(Math.floor(Math.random() * 10) + 1);
+
+            const today = new Date();
+            console.log(today.getFullYear());
+        """.trimIndent(),
+        exercise = "Use `Math.random()` and `Math.floor()` to generate a random integer between 1 and 100, and print it.",
+        difficulty = "Beginner",
+        estimatedTime = 25,
+        order = 14
+    ),
+    Lesson(
+        id = "js_15",
+        languageId = 5,
+        title = "Final Project: To-Do List",
+        description = "Build a console-based task manager",
+        content = """
+            Let's combine what you've learned!
+
+            We will build a simple To-Do List:
+            1. A class `Task` with `title` and `completed` status.
+            2. A class `TodoList` with an array of tasks.
+            3. Methods to add, complete, and display tasks.
+        """.trimIndent(),
+        codeExample = """
+            class Task {
+                constructor(title) {
+                    this.title = title;
+                    this.completed = false;
+                }
+            }
+
+            class TodoList {
+                constructor() {
+                    this.tasks = [];
+                }
+
+                addTask(title) {
+                    this.tasks.push(new Task(title));
+                    console.log("Added: " + title);
+                }
+
+                showTasks() {
+                    this.tasks.forEach(t => {
+                        const status = t.completed ? "[x]" : "[ ]";
+                        console.log(status + " " + t.title);
+                    });
+                }
+            }
+
+            const myList = new TodoList();
+            myList.addTask("Learn JavaScript");
+            myList.addTask("Build an app");
+            myList.showTasks();
+        """.trimIndent(),
+        exercise = "Add a method to the `TodoList` class called `completeTask(title)` that finds a task by its title and sets `completed` to true.",
+        difficulty = "Advanced",
+        estimatedTime = 45,
+        order = 15
     )
 )

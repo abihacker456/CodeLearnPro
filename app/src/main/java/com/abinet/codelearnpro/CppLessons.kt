@@ -1,6 +1,7 @@
 package com.abinet.codelearnpro
 
 val cppLessons = listOf(
+    // --- ORIGINAL 5 LESSONS ---
     Lesson(
         id = "cpp_01",
         languageId = 2,
@@ -213,5 +214,459 @@ val cppLessons = listOf(
         difficulty = "Intermediate",
         estimatedTime = 30,
         order = 5
+    ),
+
+    // --- NEW 10 LESSONS ---
+    Lesson(
+        id = "cpp_06",
+        languageId = 2,
+        title = "Vectors",
+        description = "Dynamic arrays that can grow in size",
+        content = """
+            Standard arrays in C++ have a fixed size. If you need an array that can grow or shrink, use a vector.
+            To use vectors, you must include the <vector> library.
+
+            Create a vector:
+                vector<int> numbers = {10, 20, 30};
+
+            Add elements:
+                numbers.push_back(40);
+
+            Get the size:
+                numbers.size();
+
+            Vectors are much safer and more flexible than raw arrays.
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            #include <vector>
+            using namespace std;
+
+            int main() {
+                vector<string> fruits = {"Apple", "Banana"};
+
+                fruits.push_back("Cherry");
+
+                for (int i = 0; i < fruits.size(); i++) {
+                    cout << fruits[i] << endl;
+                }
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Create a vector of integers, add 3 numbers to it using push_back, and print the size of the vector.",
+        difficulty = "Intermediate",
+        estimatedTime = 20,
+        order = 6
+    ),
+    Lesson(
+        id = "cpp_07",
+        languageId = 2,
+        title = "Pointers",
+        description = "Variables that store memory addresses",
+        content = """
+            A pointer is a variable that stores the memory address of another variable.
+
+            Declare a pointer using the * symbol:
+                int age = 20;
+                int* ptr = &age;
+                // & gets the address of age
+
+            To get the value the pointer is pointing to, use * (dereference):
+                cout << *ptr; // prints 20
+
+            Pointers are powerful but dangerous. If you point to invalid memory, the program will crash.
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+                int score = 100;
+                int* p = &score;
+
+                cout << "Value: " << score << endl;
+                cout << "Address: " << p << endl;
+                cout << "Value via pointer: " << *p << endl;
+
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Create a double variable named price with a value of 99.99. Create a pointer to it, and use the pointer to print the value.",
+        difficulty = "Advanced",
+        estimatedTime = 35,
+        order = 7
+    ),
+    Lesson(
+        id = "cpp_08",
+        languageId = 2,
+        title = "References",
+        description = "An alias for an existing variable",
+        content = """
+            A reference is another name for an existing variable. It is created using the & symbol.
+
+            int a = 10;
+            int& ref = a; // ref is now another name for a
+
+            If you change ref, you change a.
+                ref = 20;
+                cout << a; // prints 20
+
+            References are often used in function parameters to avoid copying large amounts of data.
+                void updateValue(int& x) {
+                    x = 100;
+                }
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            using namespace std;
+
+            void doubleValue(int& num) {
+                num = num * 2;
+            }
+
+            int main() {
+                int myNum = 5;
+                doubleValue(myNum);
+                cout << myNum << endl; // prints 10
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Write a function called `triple` that takes an integer reference and multiplies the original variable by 3.",
+        difficulty = "Intermediate",
+        estimatedTime = 25,
+        order = 8
+    ),
+    Lesson(
+        id = "cpp_09",
+        languageId = 2,
+        title = "Classes and Objects",
+        description = "Introduction to Object-Oriented Programming in C++",
+        content = """
+            C++ is an object-oriented language. A class is a blueprint for creating objects.
+
+            class Car {
+            public:
+                string brand;
+                int year;
+
+                void honk() {
+                    cout << "Beep!" << endl;
+                }
+            };
+
+            The `public:` keyword means these members can be accessed from outside the class.
+
+            Create an object:
+                Car myCar;
+                myCar.brand = "Toyota";
+                myCar.honk();
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            using namespace std;
+
+            class Dog {
+            public:
+                string name;
+
+                void bark() {
+                    cout << name << " says Woof!" << endl;
+                }
+            };
+
+            int main() {
+                Dog d1;
+                d1.name = "Buddy";
+                d1.bark();
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Create a class called `Book` with a string `title` and an integer `pages`. Create one object, set the values, and print them.",
+        difficulty = "Intermediate",
+        estimatedTime = 30,
+        order = 9
+    ),
+    Lesson(
+        id = "cpp_10",
+        languageId = 2,
+        title = "Constructors",
+        description = "Special methods that run when an object is created",
+        content = """
+            A constructor is a special method that is automatically called when you create a new object.
+
+            It has the same name as the class and no return type.
+
+            class Student {
+            public:
+                string name;
+
+                // Constructor
+                Student(string n) {
+                    name = n;
+                }
+            };
+
+            Now, you must provide the name when creating the object:
+                Student s1("Abinet");
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            using namespace std;
+
+            class Player {
+            public:
+                string username;
+                int level;
+
+                Player(string u, int l) {
+                    username = u;
+                    level = l;
+                }
+            };
+
+            int main() {
+                Player p1("AbiPro", 10);
+                cout << p1.username << " is level " << p1.level << endl;
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Add a constructor to a class named `Rectangle` that takes width and height as integers and assigns them to the object's variables.",
+        difficulty = "Intermediate",
+        estimatedTime = 30,
+        order = 10
+    ),
+    Lesson(
+        id = "cpp_11",
+        languageId = 2,
+        title = "Inheritance",
+        description = "Create classes based on other classes",
+        content = """
+            Inheritance allows a new class (child) to inherit properties and methods from an existing class (parent).
+
+            class Animal {
+            public:
+                void eat() { cout << "Eating..." << endl; }
+            };
+
+            class Dog : public Animal {
+            public:
+                void bark() { cout << "Woof!" << endl; }
+            };
+
+            The Dog class now has both `eat()` and `bark()`.
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            using namespace std;
+
+            class Vehicle {
+            public:
+                void start() {
+                    cout << "Engine started." << endl;
+                }
+            };
+
+            class Car : public Vehicle {
+            public:
+                void drive() {
+                    cout << "Car is driving." << endl;
+                }
+            };
+
+            int main() {
+                Car myCar;
+                myCar.start();
+                myCar.drive();
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Create a base class `Shape` with a method `describe()` that prints 'I am a shape'. Create a child class `Circle` that inherits from Shape and adds a method `area()`.",
+        difficulty = "Advanced",
+        estimatedTime = 35,
+        order = 11
+    ),
+    Lesson(
+        id = "cpp_12",
+        languageId = 2,
+        title = "Structs",
+        description = "A simpler way to group related data",
+        content = """
+            A struct is similar to a class, but its members are public by default.
+
+            They are often used for simple data structures that don't need complex methods.
+
+            struct Point {
+                int x;
+                int y;
+            };
+
+            Usage:
+                Point p1;
+                p1.x = 10;
+                p1.y = 20;
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            using namespace std;
+
+            struct Student {
+                string name;
+                int age;
+                double gpa;
+            };
+
+            int main() {
+                Student s1 = {"Abinet", 20, 3.75};
+                cout << s1.name << " has a GPA of " << s1.gpa << endl;
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Create a struct named `Book` with a string `title` and a double `price`. Create an instance of it, set the values, and print them.",
+        difficulty = "Beginner",
+        estimatedTime = 20,
+        order = 12
+    ),
+    Lesson(
+        id = "cpp_13",
+        languageId = 2,
+        title = "String Manipulation",
+        description = "Working with text in C++",
+        content = """
+            In C++, `string` is a class that provides many useful methods.
+
+            #include <string>
+
+            string text = "Hello";
+
+            - text.length() -> returns 5
+            - text.append(" World") -> "Hello World"
+            - text[0] -> 'H'
+            - text.substr(0, 5) -> "Hello"
+
+            Strings are incredibly useful for processing user input and displaying dynamic text.
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            #include <string>
+            using namespace std;
+
+            int main() {
+                string name = "CodeLearn";
+
+                cout << name.length() << endl;
+                cout << name[0] << endl;
+
+                name += " Pro";
+                cout << name << endl;
+
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Create a string with the value 'Programming'. Print the length of the string, and then print the first and last characters.",
+        difficulty = "Intermediate",
+        estimatedTime = 25,
+        order = 13
+    ),
+    Lesson(
+        id = "cpp_14",
+        languageId = 2,
+        title = "Exception Handling",
+        description = "Catch errors before they crash your program",
+        content = """
+            Exception handling lets you deal with runtime errors gracefully.
+
+            Use `try` to wrap code that might fail, and `catch` to handle the error.
+
+            try {
+                int age = -5;
+                if (age < 0) {
+                    throw runtime_error("Age cannot be negative");
+                }
+            } catch (const exception& e) {
+                cout << "Error: " << e.what() << endl;
+            }
+
+            `throw` is used to trigger an error.
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            #include <stdexcept>
+            using namespace std;
+
+            int main() {
+                try {
+                    int divisor = 0;
+                    if (divisor == 0) {
+                        throw runtime_error("Cannot divide by zero!");
+                    }
+                    cout << 10 / divisor << endl;
+                } catch (const exception& e) {
+                    cout << "Caught an error: " << e.what() << endl;
+                }
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "Write a try/catch block. Inside the try block, use `throw` to throw a `runtime_error` with the message 'Something went wrong'. Catch it and print the message.",
+        difficulty = "Advanced",
+        estimatedTime = 30,
+        order = 14
+    ),
+    Lesson(
+        id = "cpp_15",
+        languageId = 2,
+        title = "Final Project: Bank Account",
+        description = "Combine classes and functions into a full program",
+        content = """
+            Let's build a simple Bank Account program.
+
+            We need:
+            1. A class called BankAccount.
+            2. It should have a balance and a constructor.
+            3. A method `deposit()` to add money.
+            4. A method `withdraw()` to take money out (if balance is enough).
+            5. A method `getBalance()`.
+
+            This tests your knowledge of classes, variables, and conditionals.
+        """.trimIndent(),
+        codeExample = """
+            #include <iostream>
+            using namespace std;
+
+            class BankAccount {
+            private:
+                double balance;
+
+            public:
+                BankAccount(double initial) {
+                    balance = initial;
+                }
+
+                void deposit(double amount) {
+                    balance += amount;
+                }
+
+                void withdraw(double amount) {
+                    if (amount <= balance) {
+                        balance -= amount;
+                    } else {
+                        cout << "Insufficient funds!" << endl;
+                    }
+                }
+
+                double getBalance() { return balance; }
+            };
+
+            int main() {
+                BankAccount myAccount(100.0);
+                myAccount.deposit(50.0);
+                myAccount.withdraw(20.0);
+                cout << "Balance: " << myAccount.getBalance() << endl;
+                return 0;
+            }
+        """.trimIndent(),
+        exercise = "In the BankAccount class above, add a check inside `deposit()` to make sure the amount is greater than 0. If it is, print 'Invalid deposit amount'.",
+        difficulty = "Advanced",
+        estimatedTime = 45,
+        order = 15
     )
 )
