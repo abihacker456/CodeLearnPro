@@ -26,6 +26,10 @@ Every lesson teaches one concept. You read a short explanation, study a working 
 - **Light and dark theme**
 - **Offline-first** — only code execution requires internet
 
+## Download link from playstore
+
+- https://play.google.com/store/apps/details?id=com.abinet.codelearnpro&pcampaignid=web_share
+
 ## Tech Stack
 
 | Layer | Technology |
