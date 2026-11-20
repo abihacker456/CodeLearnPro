@@ -26,10 +26,6 @@ Every lesson teaches one concept. You read a short explanation, study a working 
 - **Light and dark theme**
 - **Offline-first** — only code execution requires internet
 
-## Screenshots
-
-> _Coming soon — add screenshots to `docs/screenshots/` and update this section._
-
 ## Tech Stack
 
 | Layer | Technology |
